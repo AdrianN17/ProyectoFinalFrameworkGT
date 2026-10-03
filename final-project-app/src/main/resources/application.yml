@@ -1,0 +1,96 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: bank-creditcard-service
+  datasource:
+    url: jdbc:h2:mem:creditcarddb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+
+# --- Galaxy Starters (Starter Development) ---
+oms:
+  logs:
+    enabled: true
+    service-name: ${spring.application.name}
+    trace-header-name: X-Trace-Id
+    correlation-header-name: X-Correlation-Id
+    excluded-paths:
+      - /actuator/health
+      - /h2-console
+
+  audit:
+    enabled: true
+    service-name: ${spring.application.name}
+    log-request: true
+    log-response: true
+    log-errors: true
+    service-bus:
+      connection-string: ${AZURE_SERVICE_BUS_CONNECTION_STRING}
+      queue-name: queue-audit
+
+  sensitive:
+    enabled: true
+    encrypt:
+      enabled: true
+      provider: AZURE_KEY_VAULT
+      azure-key-vault:
+        vault-url: https://azkvadrian1.vault.azure.net/
+        key-name: oms-key
+    mask:
+      enabled: true
+      enabled-by-default: true
+    audit:
+      enabled: true
+
+  observability:
+    enabled: true
+    service-name: ${spring.application.name}
+    business-metrics-enabled: true
+    method-metrics-enabled: true
+    health-enabled: true
+
+# --- Andes API Toolkit (starter propio, Java Library Development) ---
+andes:
+  api:
+    server:
+      correlation:
+        enabled: true
+      response:
+        wrap-enabled: false
+      error-handling:
+        enabled: true
+      openapi:
+        enabled: true
+        title: Bank Credit Card API
+        description: Ver contracts/openapi-creditcard.yaml
+        version: 1.0.0
+    client:
+      clients:
+        fraudCheck:
+          base-url: http://localhost:9090
+          connect-timeout: 2s
+          read-timeout: 5s
+          correlation-id-enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  prometheus:
+    metrics:
+      export:
+        enabled: true

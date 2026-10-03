@@ -1,0 +1,73 @@
+# Maven / Java build outputs (applies to all subfolders)
+**/target/
+**/target/**
+**/build/
+**/build/**
+**/bin/
+**/bin/**
+**/out/
+**/out/**
+**/classes/
+**/classes/**
+**/test-classes/
+**/test-classes/**
+**/generated-sources/
+**/generated-test-sources/
+**/maven-status/
+**/maven-archiver/
+**/javadoc-bundle-options/
+**/apidocs/
+**/site/
+**/surefire-reports/
+**/failsafe-reports/
+**/jacoco.exec
+
+# Maven wrapper / logs
+.mvn/wrapper/maven-wrapper.jar
+mvnw.cmd
+mvnw
+*.log
+**/*.log
+
+# IDE files (all nested folders)
+**/.idea/
+**/.idea/**
+**/.vscode/
+**/.vscode/**
+**/*.iml
+**/*.ipr
+**/*.iws
+**/.project
+**/.classpath
+**/.settings/
+**/.settings/**
+**/.factorypath
+**/.metadata/
+
+# OS files
+**/.DS_Store
+**/Thumbs.db
+**/Desktop.ini
+
+# Runtime/temp files
+**/*.tmp
+**/*.swp
+**/*.swo
+**/*.bak
+**/*.orig
+
+# Local env / secrets
+.env
+.env.*
+**/.env
+**/.env.*
+**/*.local
+
+# Local repositories/cache
+.local-nexus-repo/
+**/.local-nexus-repo/
+
+# Generic generated docs or local artifacts
+**/docs/_build/
+**/coverage/
+**/.cache/

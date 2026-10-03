@@ -1,0 +1,47 @@
+openapi: 3.0.3
+info:
+  title: Fraud Check API
+  version: 1.0.0
+  description: API externa simulada para validacion anti-fraude.
+servers:
+  - url: http://localhost:9090
+paths:
+  /api/v1/fraud-check:
+    post:
+      tags: [Fraud]
+      operationId: checkFraud
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FraudCheckRequest'
+      responses:
+        '200':
+          description: Resultado del fraude
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FraudCheckResponse'
+components:
+  schemas:
+    FraudCheckRequest:
+      type: object
+      required: [cardNumber, documentNumber]
+      properties:
+        cardNumber:
+          type: string
+        documentNumber:
+          type: string
+    FraudCheckResponse:
+      type: object
+      required: [approved, score, reason]
+      properties:
+        approved:
+          type: boolean
+        score:
+          type: integer
+          minimum: 0
+          maximum: 100
+        reason:
+          type: string
