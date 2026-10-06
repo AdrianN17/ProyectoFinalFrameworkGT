@@ -6,21 +6,23 @@
 
     <groupId>pe.edu.galaxy.framework</groupId>
     <artifactId>galaxy-custom-framework-parent</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <packaging>pom</packaging>
 
     <name>Galaxy Custom Framework Parent</name>
     <description>Parent del framework corporativo y aplicacion final consumidora</description>
 
     <modules>
-        <module>framework-bom</module>
-        <module>framework-core</module>
-        <module>framework-cqrs-core</module>
-        <module>framework-bus-spring</module>
-        <module>framework-jpa-exception-core</module>
-        <module>framework-architecture-layered</module>
-        <module>framework-openapi</module>
-        <module>poc-integracion</module>
+        <module>framework/framework-bom</module>
+        <module>framework/framework-core</module>
+        <module>framework/framework-cqrs-core</module>
+        <module>framework/framework-bus-spring</module>
+        <module>framework/framework-jpa-exception-core</module>
+        <module>framework/framework-architecture-layered</module>
+        <module>framework/framework-openapi</module>
+        <module>framework/framework-id-fraud</module>
+        <module>framework/framework-spring-starter</module>
+        <module>framework/framework-test-starter</module>
     </modules>
 
     <properties>
@@ -28,7 +30,7 @@
         <maven.compiler.release>21</maven.compiler.release>
         <java.version>21</java.version>
         <spring-boot.version>4.1.1</spring-boot.version>
-        <andes.api.version>1.0.7</andes.api.version>
+        <andes.api.version>1.0.9</andes.api.version>
         <galaxy.starters.version>3.0.3</galaxy.starters.version>
         <nexus.releases.url>http://localhost:8089/repository/maven-releases/</nexus.releases.url>
         <nexus.snapshots.url>http://localhost:8089/repository/maven-snapshots/</nexus.snapshots.url>
@@ -68,6 +70,21 @@
             <dependency>
                 <groupId>pe.edu.galaxy.framework</groupId>
                 <artifactId>framework-openapi</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>pe.edu.galaxy.framework</groupId>
+                <artifactId>framework-id-fraud</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>pe.edu.galaxy.framework</groupId>
+                <artifactId>framework-spring-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>pe.edu.galaxy.framework</groupId>
+                <artifactId>framework-test-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

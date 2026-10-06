@@ -7,8 +7,8 @@
     <parent>
         <groupId>pe.edu.galaxy.framework</groupId>
         <artifactId>galaxy-custom-framework-parent</artifactId>
-        <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.0.2</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>framework-bom</artifactId>
@@ -45,6 +45,21 @@
             <dependency>
                 <groupId>pe.edu.galaxy.framework</groupId>
                 <artifactId>framework-openapi</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>pe.edu.galaxy.framework</groupId>
+                <artifactId>framework-id-fraud</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>pe.edu.galaxy.framework</groupId>
+                <artifactId>framework-spring-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>pe.edu.galaxy.framework</groupId>
+                <artifactId>framework-test-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

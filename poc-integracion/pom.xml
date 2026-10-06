@@ -18,11 +18,9 @@
 
     <properties>
         <java.version>21</java.version>
-        <framework.version>1.0.0</framework.version>
-        <andes.api.version>1.0.7</andes.api.version>
+        <framework.version>1.0.2</framework.version>
         <galaxy.starters.version>3.0.3</galaxy.starters.version>
         <openapi-generator.version>7.11.0</openapi-generator.version>
-        <swagger-annotations.version>2.2.22</swagger-annotations.version>
     </properties>
 
     <dependencyManagement>
@@ -31,13 +29,6 @@
                 <groupId>pe.edu.galaxy.framework</groupId>
                 <artifactId>framework-bom</artifactId>
                 <version>${framework.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>pe.andes.api</groupId>
-                <artifactId>andes-api-bom</artifactId>
-                <version>${andes.api.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -91,42 +82,18 @@
             <groupId>pe.edu.galaxy.framework</groupId>
             <artifactId>framework-openapi</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>pe.andes.api</groupId>
-            <artifactId>andes-api-server-spring-boot-starter</artifactId>
+            <groupId>pe.edu.galaxy.framework</groupId>
+            <artifactId>framework-id-fraud</artifactId>
         </dependency>
         <dependency>
-            <groupId>pe.andes.api</groupId>
-            <artifactId>andes-id-generator-spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>pe.edu.galaxy.framework</groupId>
+            <artifactId>framework-spring-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <groupId>pe.edu.galaxy.framework</groupId>
+            <artifactId>framework-test-starter</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-annotations-jakarta</artifactId>
-            <version>${swagger-annotations.version}</version>
         </dependency>
     </dependencies>
 

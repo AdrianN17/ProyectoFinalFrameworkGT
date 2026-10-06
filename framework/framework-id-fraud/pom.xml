@@ -7,17 +7,25 @@
     <parent>
         <groupId>pe.edu.galaxy.framework</groupId>
         <artifactId>galaxy-custom-framework-parent</artifactId>
-        <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.0.2</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>framework-cqrs-core</artifactId>
-    <name>Framework CQRS Core</name>
+    <artifactId>framework-id-fraud</artifactId>
+    <name>Framework ID Fraud Integration</name>
 
     <dependencies>
         <dependency>
             <groupId>pe.edu.galaxy.framework</groupId>
-            <artifactId>framework-core</artifactId>
+            <artifactId>framework-openapi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>pe.andes.api</groupId>
+            <artifactId>andes-id-generator-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 </project>

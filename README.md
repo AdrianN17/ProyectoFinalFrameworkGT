@@ -35,7 +35,7 @@ El proyecto está dividido en dos grandes bloques:
 - El controller REST se genera con `delegatePattern=true`.
 - La lógica específica vive en `poc-integracion/.../delegate/CreditCardsApiDelegateImpl`.
 - El cliente para fraude se genera desde `contracts/openapi-fraudcheck.yaml`.
-- La integración con la API de fraude queda encapsulada en `framework-openapi`.
+- La integración con la API de fraude e ID queda encapsulada en `framework-id-fraud`.
 
 ## Módulos del framework
 
@@ -45,7 +45,8 @@ El proyecto está dividido en dos grandes bloques:
 - `framework-bus-spring`: implementación Spring del command/query bus.
 - `framework-jpa-exception-core`: manejo de persistencia y excepciones.
 - `framework-architecture-layered`: arquitectura orientada a capas.
-- `framework-openapi`: integración y modelos OpenAPI del cliente anti-fraude.
+- `framework-openapi`: modelos OpenAPI compartidos.
+- `framework-id-fraud`: integración de fraude + id-generator basada en Andes API.
 - `poc-integracion`: aplicación de integración consumidora del framework bajo arquitectura hexagonal.
 
 ## Dependencias externas
@@ -175,6 +176,7 @@ Respuesta esperada: `HTTP/1.1 422 Unprocessable Entity` con error de fraude.
 ├── framework-cqrs-core/
 ├── framework-jpa-exception-core/
 ├── framework-openapi/
+├── framework-id-fraud/
 ├── scripts/
 │   ├── mock_fraudcheck_server.py
 │   ├── publish-local.sh
@@ -204,4 +206,3 @@ Si se quiere reutilizar este framework en otra aplicación, la ruta recomendada 
 2. importar el BOM corporativo,
 3. declarar las dependencias de los módulos necesarios,
 4. construir la app con contratos OpenAPI y delegates para mantener la lógica desacoplada.
-

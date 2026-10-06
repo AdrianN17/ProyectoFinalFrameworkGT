@@ -7,25 +7,25 @@
     <parent>
         <groupId>pe.edu.galaxy.framework</groupId>
         <artifactId>galaxy-custom-framework-parent</artifactId>
-        <version>1.0.0</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.0.2</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>framework-bus-spring</artifactId>
-    <name>Framework Bus Spring</name>
+    <artifactId>framework-architecture-layered</artifactId>
+    <name>Framework Architecture Layered</name>
 
     <dependencies>
         <dependency>
             <groupId>pe.edu.galaxy.framework</groupId>
-            <artifactId>framework-cqrs-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <artifactId>framework-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
         </dependency>
     </dependencies>
 </project>
