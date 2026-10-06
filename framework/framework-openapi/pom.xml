@@ -7,7 +7,7 @@
     <parent>
         <groupId>pe.edu.galaxy.framework</groupId>
         <artifactId>galaxy-custom-framework-parent</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.4</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -35,10 +35,12 @@
         <dependency>
             <groupId>pe.andes.api</groupId>
             <artifactId>andes-api-server-spring-boot-starter</artifactId>
+            <classifier>plain</classifier>
         </dependency>
         <dependency>
             <groupId>pe.andes.api</groupId>
             <artifactId>andes-api-client-spring-boot-starter</artifactId>
+            <classifier>plain</classifier>
         </dependency>
     </dependencies>
 
