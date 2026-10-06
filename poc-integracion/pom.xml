@@ -12,9 +12,9 @@
     </parent>
 
     <groupId>pe.edu.galaxy.app</groupId>
-    <artifactId>final-project-app</artifactId>
+    <artifactId>poc-integracion</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Final Project App</name>
+    <name>POC Integración</name>
 
     <properties>
         <java.version>21</java.version>
@@ -144,12 +144,12 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/../contracts/openapi-creditcard.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/openapi/openapi-creditcard.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <output>${project.build.directory}/generated-sources/openapi</output>
-                            <apiPackage>pe.edu.galaxy.finalapp.generated.server.api</apiPackage>
-                            <modelPackage>pe.edu.galaxy.finalapp.generated.server.model</modelPackage>
-                            <invokerPackage>pe.edu.galaxy.finalapp.generated.server</invokerPackage>
+                            <apiPackage>pe.edu.galaxy.pocintegracion.generated.server.api</apiPackage>
+                            <modelPackage>pe.edu.galaxy.pocintegracion.generated.server.model</modelPackage>
+                            <invokerPackage>pe.edu.galaxy.pocintegracion.generated.server</invokerPackage>
                             <generateApiTests>false</generateApiTests>
                             <generateModelTests>false</generateModelTests>
                             <generateApiDocumentation>false</generateApiDocumentation>
@@ -170,7 +170,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>pe.edu.galaxy.finalapp.FinalProjectApplication</mainClass>
+                    <mainClass>pe.edu.galaxy.pocintegracion.PocIntegracionApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

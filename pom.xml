@@ -20,6 +20,7 @@
         <module>framework-jpa-exception-core</module>
         <module>framework-architecture-layered</module>
         <module>framework-openapi</module>
+        <module>poc-integracion</module>
     </modules>
 
     <properties>

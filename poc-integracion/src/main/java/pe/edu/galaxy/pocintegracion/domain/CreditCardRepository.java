@@ -1,4 +1,4 @@
-package pe.edu.galaxy.finalapp.domain;
+package pe.edu.galaxy.pocintegracion.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

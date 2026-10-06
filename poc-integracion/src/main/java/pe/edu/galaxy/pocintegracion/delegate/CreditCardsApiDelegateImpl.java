@@ -1,15 +1,15 @@
-package pe.edu.galaxy.finalapp.delegate;
+package pe.edu.galaxy.pocintegracion.delegate;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import pe.edu.galaxy.finalapp.application.CreateCreditCardCommand;
-import pe.edu.galaxy.finalapp.application.CreditCardResult;
-import pe.edu.galaxy.finalapp.application.GetCreditCardByExternalIdQuery;
-import pe.edu.galaxy.finalapp.generated.server.api.CreditCardsApiDelegate;
-import pe.edu.galaxy.finalapp.generated.server.model.CreditCard;
-import pe.edu.galaxy.finalapp.generated.server.model.CreditCardEnvelope;
-import pe.edu.galaxy.finalapp.generated.server.model.CreateCreditCardRequest;
+import pe.edu.galaxy.pocintegracion.application.CreateCreditCardCommand;
+import pe.edu.galaxy.pocintegracion.application.CreditCardResult;
+import pe.edu.galaxy.pocintegracion.application.GetCreditCardByExternalIdQuery;
+import pe.edu.galaxy.pocintegracion.generated.server.api.CreditCardsApiDelegate;
+import pe.edu.galaxy.pocintegracion.generated.server.model.CreditCard;
+import pe.edu.galaxy.pocintegracion.generated.server.model.CreditCardEnvelope;
+import pe.edu.galaxy.pocintegracion.generated.server.model.CreateCreditCardRequest;
 import pe.edu.galaxy.framework.cqrs.CommandBus;
 import pe.edu.galaxy.framework.cqrs.QueryBus;
 

@@ -1,4 +1,4 @@
-package pe.edu.galaxy.finalapp.application;
+package pe.edu.galaxy.pocintegracion.application;
 
 import pe.edu.galaxy.framework.cqrs.Query;
 

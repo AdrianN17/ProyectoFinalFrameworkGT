@@ -21,8 +21,11 @@ El proyecto está dividido en dos grandes bloques:
    - Publicados como artefactos Maven.
    - Consumidos por la app final desde Nexus.
 
-2. Aplicación final
-   - Implementación de negocio real.
+2. POC de integración
+   - Implementación de negocio real bajo arquitectura hexagonal.
+   - La capa de dominio mantiene las entidades y puertos.
+   - La capa de aplicación orquesta casos de uso y comandos/consultas.
+   - Los adaptadores de entrada/salida conectan la API REST, persistencia JPA y consumo del gateway anti-fraude.
    - Genera su API desde `contracts/openapi-creditcard.yaml`.
    - La lógica no se escribe en un controller explícito, sino en un delegate generado por OpenAPI.
 
@@ -30,7 +33,7 @@ El proyecto está dividido en dos grandes bloques:
 
 - El contrato de entrada/salida del server está en `contracts/openapi-creditcard.yaml`.
 - El controller REST se genera con `delegatePattern=true`.
-- La lógica específica vive en `final-project-app/.../delegate/CreditCardsApiDelegateImpl`.
+- La lógica específica vive en `poc-integracion/.../delegate/CreditCardsApiDelegateImpl`.
 - El cliente para fraude se genera desde `contracts/openapi-fraudcheck.yaml`.
 - La integración con la API de fraude queda encapsulada en `framework-openapi`.
 
@@ -43,7 +46,7 @@ El proyecto está dividido en dos grandes bloques:
 - `framework-jpa-exception-core`: manejo de persistencia y excepciones.
 - `framework-architecture-layered`: arquitectura orientada a capas.
 - `framework-openapi`: integración y modelos OpenAPI del cliente anti-fraude.
-- `final-project-app`: aplicación final consumidora del framework.
+- `poc-integracion`: aplicación de integración consumidora del framework bajo arquitectura hexagonal.
 
 ## Dependencias externas
 
@@ -105,7 +108,7 @@ python3 scripts/mock_fraudcheck_server.py --port 9090
 ### 2) Levantar la app final
 
 ```bash
-mvn -pl final-project-app spring-boot:run
+mvn -pl poc-integracion spring-boot:run
 ```
 
 La aplicación queda disponible en:
@@ -164,7 +167,7 @@ Respuesta esperada: `HTTP/1.1 422 Unprocessable Entity` con error de fraude.
 ├── contracts/
 │   ├── openapi-creditcard.yaml
 │   └── openapi-fraudcheck.yaml
-├── final-project-app/
+├── poc-integracion/
 ├── framework-architecture-layered/
 ├── framework-bom/
 ├── framework-bus-spring/

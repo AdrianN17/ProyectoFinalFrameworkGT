@@ -1,4 +1,4 @@
-package pe.edu.galaxy.finalapp.application;
+package pe.edu.galaxy.pocintegracion.application;
 
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.galaxy.framework.architecture.layered.ApplicationService;
@@ -6,8 +6,8 @@ import pe.edu.galaxy.framework.core.exception.FrameworkException;
 import pe.edu.galaxy.framework.cqrs.TypedCommandHandler;
 import pe.edu.galaxy.framework.openapi.fraud.FraudCheckDecision;
 import pe.edu.galaxy.framework.openapi.fraud.FraudCheckGateway;
-import pe.edu.galaxy.finalapp.domain.CreditCardAccount;
-import pe.edu.galaxy.finalapp.domain.CreditCardRepository;
+import pe.edu.galaxy.pocintegracion.domain.CreditCardAccount;
+import pe.edu.galaxy.pocintegracion.domain.CreditCardRepository;
 
 import java.util.UUID;
 

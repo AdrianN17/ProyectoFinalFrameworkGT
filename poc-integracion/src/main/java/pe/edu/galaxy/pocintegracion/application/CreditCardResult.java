@@ -1,4 +1,4 @@
-package pe.edu.galaxy.finalapp.application;
+package pe.edu.galaxy.pocintegracion.application;
 
 public record CreditCardResult(
         Long id,

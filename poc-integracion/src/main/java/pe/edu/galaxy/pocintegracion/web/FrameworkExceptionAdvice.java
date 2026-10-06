@@ -1,4 +1,4 @@
-package pe.edu.galaxy.finalapp.web;
+package pe.edu.galaxy.pocintegracion.web;
 
 import java.time.Instant;
 import java.util.Map;
