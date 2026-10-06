@@ -57,9 +57,14 @@ curl -X GET "$API_BASE/api/v1/credit-cards/$EXTERNAL_ID"
 
 ## Casos de error
 
-### A) 400 Bad Request - Validacion del request (`POST /api/v1/credit-cards`)
+### A) Validacion del request (`POST /api/v1/credit-cards`)
 
 Reglas del contrato OpenAPI: `holderName` (3-150), `cardNumber` (13-19), `documentNumber` (8-20), todos obligatorios.
+
+- A1 a A6 (campos faltantes o longitudes invalidas): el starter Andes responde **422** con `code: VALIDATION_ERROR` y el detalle por campo en `error.details`.
+- A7 (JSON mal formado): responde **400** con `code: MALFORMED_REQUEST` (`MalformedRequestExceptionMapper`).
+
+Todos los errores usan el mismo envelope `{success:false, data:null, error:{code,message,httpStatus,traceId,timestamp,details[]}, metadata:null}`.
 
 **A1. `holderName` demasiado corto (< 3):**
 
@@ -188,14 +193,21 @@ curl -i -X POST "$API_BASE/api/v1/credit-cards" \
   }'
 ```
 
-Respuesta esperada (generada por `FrameworkExceptionAdvice`):
+Respuesta esperada (envelope Andes; el codigo de dominio lo aporta `FraudRejectedExceptionMapper`):
 
 ```json
 {
-  "timestamp": "2026-10-06T00:00:00Z",
-  "code": "FRAUD_REJECTED",
-  "message": "Credit card rejected by fraud-check: REJECTED_BY_MOCK_RULE",
-  "details": []
+  "success": false,
+  "data": null,
+  "error": {
+    "code": "FRAUD_REJECTED",
+    "message": "Credit card rejected by fraud-check: REJECTED_BY_MOCK_RULE",
+    "httpStatus": 422,
+    "traceId": "19f8a806-12ce-4fd7-9bb8-169d33f2de58",
+    "timestamp": "2026-10-06T21:01:29.074Z",
+    "details": []
+  },
+  "metadata": null
 }
 ```
 
@@ -205,14 +217,21 @@ Respuesta esperada (generada por `FrameworkExceptionAdvice`):
 curl -i -X GET "$API_BASE/api/v1/credit-cards/CC-no-existe"
 ```
 
-Respuesta esperada:
+Respuesta esperada (envelope Andes; `CreditCardNotFoundExceptionMapper`):
 
 ```json
 {
-  "timestamp": "2026-10-06T00:00:00Z",
-  "code": "CREDIT_CARD_NOT_FOUND",
-  "message": "Credit card not found",
-  "details": []
+  "success": false,
+  "data": null,
+  "error": {
+    "code": "CREDIT_CARD_NOT_FOUND",
+    "message": "Credit card not found",
+    "httpStatus": 404,
+    "traceId": "b7baa10d-c7cb-4258-ae4e-76329bcf4e32",
+    "timestamp": "2026-10-06T21:01:28.867Z",
+    "details": []
+  },
+  "metadata": null
 }
 ```
 
@@ -222,7 +241,8 @@ Respuesta esperada:
 |--------|----------|-------|
 | 201 | `POST /api/v1/credit-cards` | Tarjeta creada y aprobada por fraude |
 | 200 | `GET /api/v1/credit-cards/{externalId}` | Tarjeta encontrada |
-| 400 | `POST /api/v1/credit-cards` | Request invalido (campos faltantes, longitudes, JSON/tipos invalidos) |
+| 400 | `POST /api/v1/credit-cards` | `MALFORMED_REQUEST` (JSON ilegible) |
 | 404 | `GET /api/v1/credit-cards/{externalId}` | `CREDIT_CARD_NOT_FOUND` |
+| 422 | `POST /api/v1/credit-cards` | `VALIDATION_ERROR` (campos faltantes o longitudes invalidas) |
 | 422 | `POST /api/v1/credit-cards` | `FRAUD_REJECTED` (`cardNumber` termina en `0000` o `documentNumber` en `9999`) |
 

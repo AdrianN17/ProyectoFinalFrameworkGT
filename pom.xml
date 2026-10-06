@@ -6,7 +6,7 @@
 
     <groupId>pe.edu.galaxy.framework</groupId>
     <artifactId>galaxy-custom-framework-parent</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <packaging>pom</packaging>
 
     <name>Galaxy Custom Framework Parent</name>
@@ -18,7 +18,7 @@
         <module>framework/framework-cqrs-core</module>
         <module>framework/framework-bus-spring</module>
         <module>framework/framework-jpa-exception-core</module>
-        <module>framework/framework-architecture-layered</module>
+        <module>framework/framework-architecture-hexagonal</module>
         <module>framework/framework-openapi</module>
         <module>framework/framework-id-fraud</module>
         <module>framework/framework-spring-starter</module>
@@ -64,7 +64,7 @@
             </dependency>
             <dependency>
                 <groupId>pe.edu.galaxy.framework</groupId>
-                <artifactId>framework-architecture-layered</artifactId>
+                <artifactId>framework-architecture-hexagonal</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

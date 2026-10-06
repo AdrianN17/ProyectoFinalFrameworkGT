@@ -29,11 +29,31 @@ El proyecto está dividido en dos grandes bloques:
    - Genera su API desde `contracts/openapi-creditcard.yaml`.
    - La lógica no se escribe en un controller explícito, sino en un delegate generado por OpenAPI.
 
+### Estructura hexagonal de `poc-integracion`
+
+```text
+pe.edu.galaxy.pocintegracion
+├── domain
+│   ├── model/        CreditCard, CreditCardStatus (POJOs sin Spring/JPA)
+│   ├── exception/    CreditCardNotFoundException, FraudRejectedException
+│   └── port/out/     CreditCardRepositoryPort, FraudCheckPort (@OutboundPort)
+├── application
+│   ├── port/in/      comandos, consultas y resultado (@InboundPort)
+│   └── service/      handlers CQRS (@ApplicationService)
+└── adapter
+    ├── in/web/       delegate OpenAPI + error/ AndesExceptionMapper (@InboundAdapter)
+    └── out/
+        ├── persistence/  entidad JPA, repositorio Spring Data, mapper, adaptador
+        └── fraud/        FraudCheckAdapter (@OutboundAdapter)
+```
+
+Las reglas de dependencia (dominio puro, aplicacion sin adaptadores, adaptadores aislados entre si) se verifican con ArchUnit en `HexagonalArchitectureTest`.
+
 ### Enfoque API-first
 
 - El contrato de entrada/salida del server está en `contracts/openapi-creditcard.yaml`.
 - El controller REST se genera con `delegatePattern=true`.
-- La lógica específica vive en `poc-integracion/.../delegate/CreditCardsApiDelegateImpl`.
+- La logica especifica vive en el adaptador de entrada `poc-integracion/.../adapter/in/web/CreditCardsApiDelegateImpl`.
 - El cliente para fraude se genera desde `contracts/openapi-fraudcheck.yaml`.
 - La integración con la API de fraude e ID queda encapsulada en `framework-id-fraud`.
 
@@ -44,7 +64,7 @@ El proyecto está dividido en dos grandes bloques:
 - `framework-cqrs-core`: contratos CQRS.
 - `framework-bus-spring`: implementación Spring del command/query bus.
 - `framework-jpa-exception-core`: manejo de persistencia y excepciones.
-- `framework-architecture-layered`: arquitectura orientada a capas.
+- `framework-architecture-hexagonal`: anotaciones de arquitectura hexagonal (puertos y adaptadores).
 - `framework-openapi`: modelos OpenAPI compartidos.
 - `framework-id-fraud`: integración de fraude + id-generator basada en Andes API.
 - `poc-integracion`: aplicación de integración consumidora del framework bajo arquitectura hexagonal.
@@ -53,7 +73,7 @@ El proyecto está dividido en dos grandes bloques:
 
 El proyecto consume librerías y starters ya existentes en Nexus, sin recrearlos dentro del repositorio:
 
-- `pe.andes.api:andes-api-bom:1.0.7`
+- `pe.andes.api:andes-api-bom:1.0.10` (los starters no estan en el BOM: se declaran con version explicita y classifier `plain`)
 - `pe.andes.api:andes-api-server-spring-boot-starter`
 - `pe.andes.api:andes-api-client-spring-boot-starter`
 - `pe.andes.api:andes-id-generator-spring-boot-starter`
@@ -169,7 +189,7 @@ Respuesta esperada: `HTTP/1.1 422 Unprocessable Entity` con error de fraude.
 │   ├── openapi-creditcard.yaml
 │   └── openapi-fraudcheck.yaml
 ├── poc-integracion/
-├── framework-architecture-layered/
+├── framework-architecture-hexagonal/
 ├── framework-bom/
 ├── framework-bus-spring/
 ├── framework-core/

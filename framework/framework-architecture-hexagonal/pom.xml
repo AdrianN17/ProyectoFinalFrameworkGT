@@ -11,13 +11,18 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>framework-bus-spring</artifactId>
-    <name>Framework Bus Spring</name>
+    <artifactId>framework-architecture-hexagonal</artifactId>
+    <name>Framework Architecture Hexagonal</name>
+    <description>Anotaciones y autoconfiguracion para arquitectura hexagonal (puertos y adaptadores).</description>
 
     <dependencies>
         <dependency>
             <groupId>pe.edu.galaxy.framework</groupId>
-            <artifactId>framework-cqrs-core</artifactId>
+            <artifactId>framework-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -25,7 +30,8 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

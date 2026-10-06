@@ -7,7 +7,7 @@
     <parent>
         <groupId>pe.edu.galaxy.framework</groupId>
         <artifactId>galaxy-custom-framework-parent</artifactId>
-        <version>1.0.4</version>
+        <version>1.0.5</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -39,7 +39,7 @@
             </dependency>
             <dependency>
                 <groupId>pe.edu.galaxy.framework</groupId>
-                <artifactId>framework-architecture-layered</artifactId>
+                <artifactId>framework-architecture-hexagonal</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
